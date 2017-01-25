@@ -15,6 +15,7 @@ root element with the given class names.
 - Mozilla Domentation
 
 */
+
 var getElementsByClassName = function(className
 ) {
   // your code here
@@ -22,12 +23,18 @@ var getElementsByClassName = function(className
 
   // create a function to check nodes
 
-  var checkNodeForClass = function(node){
+  var checkNodeForClass = function(node) {
   // if the node has a class push that node to elements (base?)
+    if (node.classList.indexOf(className) !== -1) {
+      node.push(node);
+    }
 
-  // if the node has children, check their children usin  (recursive case)
-
-
+    // if the node has children, check their children usin  (recursive case)
+    if (node.hasChildNodes()) {
+      for (var i = 0; i < node.childNodes.length; i++) {
+        checkNodeForClass(node.childNodes[i]);
+      }
+    }
   }
 
   // if the node has a class push that node to elements
@@ -47,12 +54,16 @@ var getElementsByClassName = function(className
     if(classListHasClass(nodes.childNodes[i].classList, className)){ // if the node (i) has the class push the node to the list of nodes with class
       elements.push(nodes[i]);
     }
-    
+
   }
   // run check nodeForClass on the document
-  
-  */  return elements;  ///return 
-  }
+
+
+  */
+    checkNodeForClass(document.body);
+
+    return elements;  ///return
+  };
 
   // you should use:
     // document.body X
