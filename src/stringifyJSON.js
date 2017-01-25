@@ -61,19 +61,26 @@ var stringifyJSON = function(obj) {
 
     //return with closing for array.
     return stringified += ']';
+
+    // handle objects
+  } else if (typeof obj === 'object') {
+    //open object ith {}
+    stringified += '{';
+
+    //iterate through object
+    
+    for (var key in obj) {
+      stringified += '\"' + key '\"' + ':'; 
+    }
+
+    return stringified += '}'; // return closed obj with }
   }
-
-
 
   //// if a collection, then iterate through collection and strigify contents
 
     // iterate through array and string contents
 
     // be able to iterate through object and string contents
-
-
-
-  return stringified; // js returns string at the end of function
 };
 
 /// special rules for
