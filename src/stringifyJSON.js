@@ -40,12 +40,10 @@ var stringifyJSON = function(obj) {
 
   // if not collection llike objects string obj
 
-  if (typeof obj === 'number' || typeof obj === 'boolean' || obj === null){
+  if (typeof obj === 'number' || typeof obj === 'boolean' || typeof obj === 'undefined' || obj === null){
     return '' + obj;
   } else if (typeof obj === 'string') {
     return '\"' + obj + '\"';
-  }
-
     //handle arrays
   } else if (Array.isArray(obj)){
     // start opening of array
@@ -74,7 +72,9 @@ var stringifyJSON = function(obj) {
     //iterate through object
     
     for (var j = 0; j < objKeys.length; j++) {
-      if (j === objKeys.length - 1) {
+      if (typeof obj[objKeys[j]] === 'function' || typeof obj[objKeys[j]] === 'undefined') {
+        stringified += ''; // if undefined or function OMIT
+      } else if (j === objKeys.length - 1) {
         stringified += stringifyJSON(objKeys[j]) + ':' + stringifyJSON(obj[objKeys[j]]);
       } else {
         stringified += stringifyJSON(objKeys[j]) + ':' + stringifyJSON(obj[objKeys[j]]) + ',';
