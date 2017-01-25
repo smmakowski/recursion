@@ -29,6 +29,8 @@ console.log(JSON.stringify(func));
 console.log('' + null)
 console.log(typeof func)
 
+console.log(Object.keys(obj));
+
 
 var stringifyJSON = function(obj) {
 	var stringified = ''; // js returns a string initiate string to ''
@@ -42,6 +44,7 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   } else if (typeof obj === 'string') {
     return '\"' + obj + '\"';
+  }
 
     //handle arrays
   } else if (Array.isArray(obj)){
@@ -65,21 +68,21 @@ var stringifyJSON = function(obj) {
     // handle objects
   } else if (typeof obj === 'object') {
     //open object ith {}
+    var objKeys = Object.keys(obj); // turn keys into object
+    
     stringified += '{';
     //iterate through object
     
-    for (var key in obj) {
-      stringified += stringifyJSON(key) + ':' + stringifyJSON(obj[key]); // strigify the keeys
+    for (var j = 0; j < objKeys.length; j++) {
+      if (j === objKeys.length - 1) {
+        stringified += stringifyJSON(objKeys[j]) + ':' + stringifyJSON(obj[objKeys[j]]);
+      } else {
+        stringified += stringifyJSON(objKeys[j]) + ':' + stringifyJSON(obj[objKeys[j]]) + ',';
+      }
     } 
 
     return stringified += '}'; // return closed obj with }
   }
-
-  //// if a collection, then iterate through collection and strigify contents
-
-    // iterate through array and string contents
-
-    // be able to iterate through object and string contents
 };
 
 /// special rules for
