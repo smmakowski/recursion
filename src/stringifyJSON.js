@@ -42,6 +42,25 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   } else if (typeof obj === 'string') {
     return '\"' + obj + '\"';
+
+    //handle arrays
+  } else if (Array.isArray(obj)){
+    // start opening of array
+    stringified += '[';
+
+    // iteratethough the array
+    for (var i = 0; i < obj.length; i++) {
+      //if last oject in array stringify object
+      if (i === obj.length -1) {
+        stringified += stringifyJSON(obj[i]);
+      } else {
+      // if not striginfy and add comma
+      stringified += stringifyJSON(obj[i]) +',';
+      }
+    }
+
+    //return with closing for array.
+    return stringified += ']';
   }
 
 
