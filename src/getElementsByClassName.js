@@ -19,27 +19,39 @@ var getElementsByClassName = function(className
 ) {
   // your code here
   var elements = [];
-  var nodes = document.body; // document body is an array of nodes
 
+  // create a function to check nodes
+
+  var checkNodeForClass = function(node){
+  // if the node has a class push that node to elements (base?)
+
+  // if the node has children, check their children usin  (recursive case)
+
+
+  }
+
+  // if the node has a class push that node to elements
+
+  /*
   var classListHasClass = function(node, searchClass){ // chekcs to see if the node has a class
     var listOfClasses = node.classList; // save listo f classes to variable
 
-    for (var i = 0; i < listOfClasses.length; i++){ // iterate through class list
-      if (clas === searchClass){ // if class and searchTerm are the same...
-        return true; // return true
-      }
-    }
-    return false; // if non of the classes === class, return false;
-  }
+        if (node.classList.indexOf(searchClass) !== 1){
+          return true; // return true
+        } else {
+          return false; // if non of the classes === class, return false;
+        }
+  };
 
   for (var i = 0; i < nodes.childNodes.length; i++) {
-  //  if(nodes.childNodes[i].classList.hasClass(className)){ // if the node (i) has the class push the node to the list of nodes with class
+    if(classListHasClass(nodes.childNodes[i].classList, className)){ // if the node (i) has the class push the node to the list of nodes with class
       elements.push(nodes[i]);
     }
-    /// I just realized that I need to make a funciton to check class list, since .hasClass requires
-        // $(<selctor>)
-
-    return elements;
+    
+  }
+  // run check nodeForClass on the document
+  
+  */  return elements;  ///return 
   }
 
   // you should use:
