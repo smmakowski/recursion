@@ -66,12 +66,11 @@ var stringifyJSON = function(obj) {
   } else if (typeof obj === 'object') {
     //open object ith {}
     stringified += '{';
-
     //iterate through object
     
     for (var key in obj) {
-      stringified += '\"' + key '\"' + ':'; 
-    }
+      stringified += stringifyJSON(key) + ':' + stringifyJSON(obj[key]); // strigify the keeys
+    } 
 
     return stringified += '}'; // return closed obj with }
   }
