@@ -25,8 +25,8 @@ var getElementsByClassName = function(className
 
   var checkNodeForClass = function(node) {
   // if the node has a class push that node to elements (base?)
-    if (node.classList.indexOf(className) !== -1) {
-      node.push(node);
+    if (node.classList !== undefined && node.classList.contains(className)) {
+      elements.push(node);
     }
 
     // if the node has children, check their children usin  (recursive case)
