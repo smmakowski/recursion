@@ -4,9 +4,7 @@
 // but you don't so you're going to write it from scratch:
 
 var stringifyJSON = function(obj) {
-	var stringified = ''; // js returns a string initiate string to ''
-
-  //should handle 'objects' that arenet arrays or objects
+	var stringified = ''; // js returns a string; initiate string to ''
 
   // if not collection llike objects string obj
 
@@ -14,8 +12,9 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   } else if (typeof obj === 'string') {
     return '\"' + obj + '\"';
-    //handle arrays
-  } else if (Array.isArray(obj)){
+  } else if (typeof obj === 'function' || typeof obj === 'undefined'){
+    return 'undefined';
+  } else if (Array.isArray(obj)){ // handles functions and undefined not in fuctions
     // start opening of array
     stringified += '[';
 
